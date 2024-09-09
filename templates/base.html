@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Courses{% endblock %}</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
+</head>
+
+<body>
+    <nav class="bg-white border-gray-200 dark:bg-gray-900">
+        <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+            <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-certificate">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M15 15m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                    <path d="M13 17.5v4.5l2 -1.5l2 1.5v-4.5" />
+                    <path d="M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -1 1.73" />
+                    <path d="M6 9l12 0" />
+                    <path d="M6 12l3 0" />
+                    <path d="M6 15l2 0" />
+                </svg>
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Cursos</span>
+            </a>
+        </div>
+    </nav>
+    <nav class="bg-gray-50 dark:bg-gray-700">
+        <div class="max-w-screen-xl px-4 py-3 mx-auto">
+            <div class="flex items-center">
+                <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
+                    <li>
+                        <a href="#" class="text-gray-900 dark:text-white hover:underline" aria-current="page">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('show_course_catalogue') }}"
+                            class="text-gray-900 dark:text-white hover:underline">Cursos</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('show_students') }}"
+                            class="text-gray-900 dark:text-white hover:underline">Estudiantes</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}
+    <!-- Content page -->
+    {% endblock %}
+
+    <footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
+        <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 Autores: Jaimes - Vegas -
+                Barboza
+            </span>
+            <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">Inicio</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">Cursos</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">Estudiantes</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+</body>
+
+</html>
