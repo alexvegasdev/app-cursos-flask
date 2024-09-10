@@ -70,6 +70,8 @@ def show_enrollments(course_id):
         result = EnrollmentService.enroll_student(course_id, student_id)
         
         if result:
+            student = studentService.get_student(student_id)
+
             # Enviar correo electrónico si la inscripción es exitosa
             emailMessage = EmailMessage()
             html_content = ""
@@ -79,7 +81,7 @@ def show_enrollments(course_id):
             emailMessage.add_alternative(html_content, subtype='html')
             emailMessage['Subject'] = 'Inscripción exitosa'
             emailMessage['From'] = os.getenv('EMAIL_SENDER')
-            emailMessage['To'] = 'destinatario@example.com'  # Cambia esto según sea necesario
+            emailMessage['To'] = student['email']  # Cambia esto según sea necesario
             
             with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
                 smtp.login(os.getenv('EMAIL_SENDER'), os.getenv('PASSWORD_SENDER')) 
