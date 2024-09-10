@@ -1,81 +1,24 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Course Catalogue
+Inscripción en Curso
 {% endblock %}
 
 {% block content %}
 <div class="mx-auto max-w-screen-xl p-4">
-    <h1
-        class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white text-center mt-3">
-        Inscripción
+    <h1 class="text-4xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white">
+        Inscribir Estudiante en el Curso
     </h1>
 
-    <form>
-        <div class="grid gap-6 mb-6 md:grid-cols-2">
-            <div class="mb-6">
-                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Correo del estudiante
-                </label>
-                <input type="email" id="email"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="jaimescayetanoj@gmail.com" required />
-            </div>
-            <div class="mb-6">
-                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Curso
-                </label>
-                <select id="countries"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    {% for course in courses %}
-                    <option value="{{ course.id }}">{{ course.title }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-
-        </div>
+    <form method="POST">
+        <label for="student_id" class="block text-sm font-medium text-gray-700">Selecciona un estudiante:</label>
+        <select id="student_id" name="student_id" class="form-select mt-1 block w-full">
+            {% for student in students %}
+            <option value="{{ student.id }}">{{ student.firstname }} {{ student.lastname }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Inscribir</button>
     </form>
-
-    <div>
-        <h2 class="text-4xl font-bold dark:text-white">Inscritos al curso</h2>
-
-        <div class="relative overflow-x-auto mt-6">
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
-                            Nombres y apellidos
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Correo electrónico
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Curso
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Fecha de inscripción
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            example
-                        </th>
-                        <td class="px-6 py-4">
-                            example
-                        </td>
-                        <td class="px-6 py-4">
-                            example
-                        </td>
-                        <td class="px-6 py-4">
-                            example
-                        </td>
-                    </tr>    
-                </tbody>
-            </table>
-        </div>
-
-    </div>
+    
 </div>
 {% endblock %}
