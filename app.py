@@ -9,6 +9,7 @@ from email.message import EmailMessage
 from services.CourseService import CourseService
 from services.StudentService import StudentService
 from services.EnrollmentService import EnrollmentService
+from services.StudentCoursesService import StudentCoursesService
 
 
 # __name__ is a special variable in Python that is used to determine whether the script is being run on its own or being imported
@@ -91,3 +92,11 @@ def show_enrollments(course_id):
     # Obtener la lista de estudiantes para mostrar en el formulario
     students = studentService.get_students()
     return render_template('enrollments.html', course_id=course_id, students=students)
+
+#----------------------------------------------------
+@app.route('/students/<int:student_id>/courses')
+def student_courses(student_id):
+    courses = StudentCoursesService.get_courses_by_student(student_id)
+    if courses is None:
+        return "No se encontraron cursos"  # Puedes mostrar una página de error o un mensaje más adecuado
+    return render_template('student_courses.html', courses=courses, student_id=student_id)

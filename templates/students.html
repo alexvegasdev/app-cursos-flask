@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Course Catalogue
+Catálogo de Estudiantes
 {% endblock %}
 
 {% block content %}
 <div class="mx-auto max-w-screen-xl p-4">
     <div class="flex justify-between items-center mb-8">
-        <h1
-            class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white text-center mt-3">
+        <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white text-center mt-3">
             Nuestros Estudiantes
         </h1>
         <a href="{{ url_for('create_student') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:focus:ring-cyan-800">
@@ -18,9 +17,8 @@ Course Catalogue
 
     <div class="w-full grid grid-cols-2 md:grid-cols-3 gap-4">
         {% for student in students %}
-        <div class="flex items-center gap-4 my-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor"
-                class="icon icon-tabler icons-tabler-filled icon-tabler-user">
+        <a href="{{ url_for('student_courses', student_id=student.id) }}" class="flex items-center gap-4 my-3 p-4 border rounded-lg shadow-md hover:bg-gray-100 dark:hover:bg-gray-800">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-user">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
                 <path d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z" />
@@ -29,7 +27,7 @@ Course Catalogue
                 <div>{{ student.firstname + ' ' + student.lastname }}</div>
                 <div class="text-sm text-gray-500 dark:text-gray-400">{{ student.email }}</div>
             </div>
-        </div>
+        </a>
         {% endfor %}
     </div>
 </div>
