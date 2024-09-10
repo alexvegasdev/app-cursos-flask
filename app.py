@@ -71,12 +71,15 @@ def show_enrollments(course_id):
         
         if result:
             student = studentService.get_student(student_id)
+            course = courseService.get_course(course_id)
 
             # Enviar correo electrónico si la inscripción es exitosa
             emailMessage = EmailMessage()
             html_content = ""
             with open('templates/email.html', 'r', -1, 'UTF-8') as file:
                 html_content = file.read()
+                html_content = html_content.replace('[Nombre del usuario]', student['firstname'])
+                html_content = html_content.replace('[Nombre del curso]', course['title'])
                 
             emailMessage.add_alternative(html_content, subtype='html')
             emailMessage['Subject'] = 'Inscripción exitosa'
