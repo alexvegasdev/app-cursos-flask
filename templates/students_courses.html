@@ -1,39 +1,35 @@
-<!-- templates/students_courses.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudiantes y Cursos</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
-</head>
-<body class="bg-gray-100">
-    <div class="container mx-auto p-6">
-        <h1 class="text-2xl font-bold mb-4">Estudiantes y Cursos</h1>
-        <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
-            <thead>
-                <tr>
-                    <th class="py-2 px-4 border-b">Nombre</th>
-                    <th class="py-2 px-4 border-b">Email</th>
-                    <th class="py-2 px-4 border-b">Cursos</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for student in students_courses %}
-                <tr>
-                    <td class="py-2 px-4 border-b">{{ student.name }}</td>
-                    <td class="py-2 px-4 border-b">{{ student.email }}</td>
-                    <td class="py-2 px-4 border-b">
-                        <ul>
-                            {% for course in student.courses %}
-                            <li>{{ course }}</li>
-                            {% endfor %}
-                        </ul>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}
+Estudiantes y Cursos
+{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto p-6 bg-gray-50 shadow-lg rounded-lg">
+    <h1 class="text-2xl font-bold mb-6 text-center">Estudiantes y Cursos</h1>
+    <table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+        <thead class="bg-blue-500 text-white">
+            <tr>
+                <th class="py-3 px-4 border-b">Nombre</th>
+                <th class="py-3 px-4 border-b">Email</th>
+                <th class="py-3 px-4 border-b">Cursos</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students_courses %}
+            <tr class="text-gray-700">
+                <td class="py-3 px-4 border-b text-center">{{ student.name }}</td>
+                <td class="py-3 px-4 border-b text-center">{{ student.email }}</td>
+                <td class="py-3 px-4 border-b text-center">
+                    <ul>
+                        {% for course in student.courses %}
+                        <li class="list-none">{{ course }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
