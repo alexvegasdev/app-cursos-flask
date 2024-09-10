@@ -10,7 +10,7 @@ Sistema web desarrollado como parte del curso de seminario en la carrera de Inge
 
 Clonar el proyecto
 ```bash
-git clone [link del proyecto]
+git clone https://github.com/alexvegasdev/app-cursos-flask.git
 ```
 
 Generar el entorno virtual
